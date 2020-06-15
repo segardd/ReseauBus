@@ -3,6 +3,7 @@ package modele;
 import java.util.Random;
 
 import context.ContextBus;
+import context.EtatBus;
 import events.ControlesDuBus;
 import events.IEventsControleBus;
 import events.IEventsDuBus;
@@ -56,12 +57,31 @@ public class Bus implements IEventsDuBus {
     @Override
     public void prochainArretDemande() {
         // TODO Auto-generated method stub
+        System.out.println("quelqu'un veut sortir au prochain arrêt");
+        monContext.prochainArretDemande();
         
     }
 
     @Override
     public void ouvertureFermeturePorte() {
         // TODO Auto-generated method stub
+        monContext.ouvertureFermeturePorte();
+        
+        
+        
+    }
+
+    @Override
+    public void arret() {
+        // TODO Auto-generated method stub
+        monContext.arret();
+        
+    }
+
+    @Override
+    public void depart() {
+        // TODO Auto-generated method stub
+        monContext.depart();
         
     }
 

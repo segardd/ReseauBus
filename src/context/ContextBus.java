@@ -31,14 +31,30 @@ public class ContextBus implements IEventsDuBus {
     @Override
     public void prochainArretDemande() {
         // TODO Auto-generated method stub
+        etatDuBus.prochainArretDemande(this);
         
     }
 
     @Override
     public void ouvertureFermeturePorte() {
         // TODO Auto-generated method stub
+        etatDuBus.ouvertureFermeturePorte(this);
         
     }
+
+    @Override
+    public void arret() {
+        // TODO Auto-generated method stub
+        etatDuBus.arret(this);
+    }
+
+    @Override
+    public void depart() {
+        // TODO Auto-generated method stub
+        etatDuBus.depart(this);
+    }
+
+
 
 
 

@@ -10,5 +10,10 @@ public abstract class EtatBus {
 
 
     public abstract void ouvertureFermeturePorte(ContextBus context);
+    
+    public abstract void depart(ContextBus context);
+    
+    public abstract void arret(ContextBus context);
+    
 
 }
