@@ -86,7 +86,7 @@ public class JsonManager {
 
             // ouverture d'un flux de sortie sur un fichier
             // a pour effet de cr�er le fichier
-            writer =  new FileWriter(fichierJson) ;
+            writer =  new FileWriter(new File(fichierJson)) ;
             writer.write(json) ;
         }  catch (IOException e) {
             System.out.println("Impossible d'�crire dans le fichier " + e.getMessage()) ;

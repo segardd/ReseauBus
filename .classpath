@@ -6,10 +6,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Téléchargements/Exo 2 - La banque/libraries/gson-2.8.6.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="lib" path="src/gson-2.8.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

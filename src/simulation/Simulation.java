@@ -24,9 +24,9 @@ public class Simulation {
         ligne1.addArret(arret1);
         ligne1.addArret(arret2);
         ligne1.addArret(arret3);
-        LinkedList<Duration> delais = new LinkedList<Duration>();
+        LinkedList<Integer> delais = new LinkedList<Integer>();
         for (Arret arret : ligne1.getArrets()) {
-            delais.add(Duration.ofSeconds((long) (Math.random()*15)));
+            delais.add((int) (Math.random()*15));
         }
         
         ligne1.setTrajets(delais);
@@ -36,6 +36,16 @@ public class Simulation {
         ligne1.addBus(bus2);
         
         bdd.getLigneDAO().create(ligne1);
+        
+        LinkedList<Ligne> mesLignes = bdd.getLigneDAO().findall();
+        mesLignes.get(0).toString();
+        
+        for (Ligne ligne : mesLignes) {
+            for (Bus bus : ligne.getBus()) {
+                bus.setLaLigne(ligne);
+                bus.run();
+            }
+        }
         
         
         

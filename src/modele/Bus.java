@@ -9,11 +9,12 @@ import events.ControlesDuBus;
 import events.IEventsControleBus;
 import events.IEventsDuBus;
 
-public class Bus implements IEventsDuBus {
-    private int id = 0;
+public class Bus extends Thread implements IEventsDuBus{
+    private int idBus = 0;
     private String numero="";
     private int ligne = 0;
     private int tmpDechargement = 0;
+    private Ligne laLigne= null;
     
     private ContextBus monContext;
     private ControlesDuBus controleBus;
@@ -33,14 +34,22 @@ public class Bus implements IEventsDuBus {
     
     
 
-    public int getId() {
-        return id;
+    public long getId() {
+        return idBus;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.idBus = id;
     }
     
+    public Ligne getLaLigne() {
+        return laLigne;
+    }
+
+    public void setLaLigne(Ligne laLigne) {
+        this.laLigne = laLigne;
+    }
+
     public void Trajet() {
         
     }
@@ -48,6 +57,37 @@ public class Bus implements IEventsDuBus {
     
     public void Arret() {
         
+    }
+    
+    @Override
+    public void run() {
+      while (true) {
+          for(int i=0; i< this.laLigne.getArrets().size(); i++) {
+              monContext.depart();
+              System.out.println("bus numero "+this.idBus+" en route");
+              try {
+                Thread.sleep(this.laLigne.getTrajets().get(i) * 1000);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+              monContext.prochainArretDemande();
+              try {
+                  Thread.sleep(2 * 1000);
+              } catch (InterruptedException e) {
+                  // TODO Auto-generated catch block
+                  e.printStackTrace();
+              }
+              monContext.arret();
+              monContext.ouvertureFermeturePorte();
+              try {
+                  Thread.sleep(this.tmpDechargement);
+              } catch (InterruptedException e) {
+                  // TODO Auto-generated catch block
+                  e.printStackTrace();
+              }
+          }
+      }
     }
 
     @Override
