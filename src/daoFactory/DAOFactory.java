@@ -21,11 +21,20 @@ public abstract class DAOFactory{
 	
 	public static DAOFactory getFactory(SourcesDonnees sd) 
 	{
+	    DAOFactory type= null;
 			switch(sd) {
 			case mySQL:
-				return DAOMySQLFactory.getInstance();
+				type = DAOMySQLFactory.getInstance();
+				break;
+			case JSON:
+			    type = DAOJsonFactory.getInstance();
+			    break;
+			
 			}
-			return null;
+			
+			return type;
+			
+			    
 		
 	};
 	

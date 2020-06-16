@@ -1,5 +1,6 @@
 package modele;
 
+import java.time.Duration;
 import java.util.LinkedList;
 
 public class Ligne {
@@ -7,18 +8,27 @@ public class Ligne {
     private String nom = "";
     private LinkedList<Arret> Arrets = null;
     private LinkedList<Bus> Bus = null;
+    private LinkedList<Duration> trajets;
     
     public Ligne(String nom) {
         this.nom= nom;
+        this.trajets = new LinkedList<Duration>();
+        this.Arrets =  new LinkedList<Arret>();
+        this.Bus = new LinkedList<Bus>();
     }
     public Ligne(String nom, LinkedList<Arret> arrets) {
         this(nom);
-        this.Arrets =  new LinkedList<Arret>();
-        this.Bus = new LinkedList<Bus>();
         this.Arrets = arrets;
+        
         
     }
 
+    public LinkedList<Duration> getTrajets() {
+        return trajets;
+    }
+    public void setTrajets(LinkedList<Duration> trajets) {
+        this.trajets = trajets;
+    }
     public String getNom() {
         return nom;
     }
@@ -57,6 +67,10 @@ public class Ligne {
     }
     public void addBus(Bus bus) {
         this.Bus.add(bus);
+    }
+    
+    public void AddDelais(Duration delais) {
+        this.trajets.add(delais);
     }
     @Override
     public String toString() {

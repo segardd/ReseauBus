@@ -1,5 +1,6 @@
 package modele;
 
+
 import java.util.Random;
 
 import context.ContextBus;
