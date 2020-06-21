@@ -1,8 +1,9 @@
 package context;
 
-public class EtatArret extends EtatBus {
+public class EtatArret implements EtatBus {
 
     private boolean demandeArret;
+    public EtatBus etatPrecedent;
     
     public EtatArret() {
         // TODO Auto-generated constructor stub

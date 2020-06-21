@@ -1,10 +1,14 @@
 package modele;
 
+import java.util.LinkedList;
+
 public class Arret {
     private int id= 0;
     private String nom = "";
     private int ligne= 0;
     private String positionGPS = "";
+    
+    //private LinkedList<Ligne> lesLignes= new LinkedList<Ligne>();
 
     public String getNom() {
         return nom;

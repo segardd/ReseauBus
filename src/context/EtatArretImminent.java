@@ -1,6 +1,6 @@
 package context;
 
-public class EtatArretImminent extends EtatBus {
+public class EtatArretImminent implements EtatBus {
 
     @Override
     public void prochainArretDemande(ContextBus context) {

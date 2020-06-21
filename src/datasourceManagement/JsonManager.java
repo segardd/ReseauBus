@@ -15,6 +15,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+
+import context.ContextBus;
+import context.EtatArret;
+import events.ControlesDuBus;
+import modele.Bus;
 import modele.Ligne;
 
 public class JsonManager {
@@ -68,6 +73,14 @@ public class JsonManager {
             // pour remplir les objets automatiquement
             Type type = new TypeToken<LinkedList<Ligne>>(){}.getType();
             lesLignes=gson.fromJson(json, type);
+            
+            for (Ligne ligne: lesLignes) {
+                for (Bus bus : ligne.getBus()) {
+                    
+                    bus.setControleBus(new ControlesDuBus());
+                    bus.setMonContext(new ContextBus(bus.getControleBus()));
+                }
+            }
         }
         
         /*for (Ligne ligne : lesLignes) {

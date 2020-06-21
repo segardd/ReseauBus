@@ -33,7 +33,7 @@ public class Simulation {
         
         ligne1.addBus(bus1);
         ligne1.addBus(bus2);
-        ligne1.addBus(bus2);
+        ligne1.addBus(bus3);
         
         bdd.getLigneDAO().create(ligne1);
         
@@ -42,8 +42,9 @@ public class Simulation {
         
         for (Ligne ligne : mesLignes) {
             for (Bus bus : ligne.getBus()) {
-                bus.setLaLigne(ligne);
-                bus.run();
+                
+                bus.WhoRunTheBus(ligne);
+               
             }
         }
         

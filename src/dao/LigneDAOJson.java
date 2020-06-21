@@ -9,7 +9,7 @@ import datasourceManagement.JsonManager;
 import modele.Ligne;
 
 public class LigneDAOJson extends DAO<Ligne> {
-    private static LigneDAOJson instance;
+    private static LigneDAOJson instance = null;
     private final GsonBuilder builder = new GsonBuilder();
     private final Gson gson = builder.create();
     private LinkedList<Ligne> lignes = JsonManager.getInstance().getData();

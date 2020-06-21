@@ -1,15 +1,15 @@
 package context;
 
+import events.ControlesDuBus;
 import events.IEventsControleBus;
 import events.IEventsDuBus;
 
 public class ContextBus implements IEventsDuBus {
-    private EtatBus etatDuBus;
-    private IEventsControleBus controleDuBus;
+    private transient EtatBus etatDuBus= new EtatArret();
+    private IEventsControleBus controleDuBus = new ControlesDuBus();
     
     public ContextBus(IEventsControleBus controleBus) {
         this.controleDuBus = controleBus;
-        this.etatDuBus = new EtatArret();
     }
     
     public EtatBus getEtatDuBus() {

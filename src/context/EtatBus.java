@@ -2,9 +2,9 @@ package context;
 
 import events.IEventsDuBus;
 
-public abstract class EtatBus {
+public interface EtatBus {
     
-    public EtatBus etatPrecedent;
+    
   
     public abstract void prochainArretDemande(ContextBus context);
 

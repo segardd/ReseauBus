@@ -21,7 +21,7 @@ public class BusDAOJson extends DAO<Bus> {
         for (Ligne ligne : lignes) {
             for (Bus Bus : ligne.getBus()) {
                 if (Bus.getId() > maxId) {
-                    maxId = Bus.getId();
+                    maxId = (int) Bus.getId();
                 }
             }
         }
@@ -75,7 +75,7 @@ public class BusDAOJson extends DAO<Bus> {
 
     @Override
     public Bus update(Bus obj) {
-        int id = obj.getId();
+        int id = (int) obj.getId();
         
         JsonManager.getInstance().setData(gson.toJson(lignes));
         lignes = JsonManager.getInstance().getData();
