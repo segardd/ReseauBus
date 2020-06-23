@@ -31,8 +31,8 @@ public class ArretDAOMySQL extends DAO<Arret> {
     
     
     public Arret find(long id) {
- 
-        String req = "SELECT * From arret where "+ id;
+        return null; // à défaire si implémentation 
+        /*String req = "SELECT * From arret where "+ id;
         
         ResultSet result = MySQLManager.getInstance().getData(req);
         Arret arret = null;
@@ -55,14 +55,14 @@ public class ArretDAOMySQL extends DAO<Arret> {
                 System.out.println(e.toString());
                 System.out.println("pas operations");
             }*/
-        }
+        /*}
         }
         catch(Exception e){
             System.out.println(e.toString());
             System.out.println("pas arret");
         }
         
-        return arret;  
+        return arret;  */
 
     }
     
@@ -74,7 +74,9 @@ public class ArretDAOMySQL extends DAO<Arret> {
         Arret arret = null;
         try {
             while(result.next()) {
-                arret = new Arret(result.getString("arretNumero"),result.getString("arretPositionGPS"));
+                arret = new Arret(result.getString("arretNumero"),
+                        Integer.parseInt(result.getString("arretPositionGPS").split(",")[0]),
+                        Integer.parseInt(result.getString("arretPositionGPS").split(",")[1]));
                 arret.setId(result.getInt("arretid"));
                 
                 /*String req2 = "SELECT * FROM operation Where cleArret = "+arret.getCleArret();

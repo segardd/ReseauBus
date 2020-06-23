@@ -16,9 +16,9 @@ public class Simulation {
         Bus bus2= new Bus("2");
         Bus bus3= new Bus("3");
         
-        Arret arret1 = new Arret("arret 1","");
-        Arret arret2 = new Arret("arret 2","");
-        Arret arret3 = new Arret("arret3" , "");
+        Arret arret1 = new Arret("arret 1",0,0);
+        Arret arret2 = new Arret("arret 2",0,0);
+        Arret arret3 = new Arret("arret3" , 0,0);
         
         Ligne ligne1 = new Ligne("ligne n1");
         ligne1.addArret(arret1);
